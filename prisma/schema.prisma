@@ -23,7 +23,6 @@ model Post {
   title     String   @db.VarChar(255)
   content   String?
   published Boolean  @default(false)
-  role      Role     @default(USER)
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int
 }
@@ -39,6 +38,7 @@ model User {
   id      Int      @default(autoincrement()) @id
   email   String   @unique
   name    String?
+  role    Role     @default(USER)
   posts   Post[]
   profile Profile?
 }
